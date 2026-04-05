@@ -4,10 +4,10 @@ exports.getDashboard = async (req, res) => {
   try {
     const userId = req.user.id;
 
-    //  Get all records of user
+    //  get all records of 
     const records = await Record.find({ user: userId });
 
-    //  Calculate totals
+    //  calculate totals
     let totalIncome = 0;
     let totalExpense = 0;
 
@@ -18,7 +18,7 @@ exports.getDashboard = async (req, res) => {
 
     const netBalance = totalIncome - totalExpense;
 
-    //  Category-wise breakdown
+    //  categorywise breakdown
     const categoryTotals = {};
 
     records.forEach((rec) => {
@@ -28,12 +28,12 @@ exports.getDashboard = async (req, res) => {
       categoryTotals[rec.category] += rec.amount;
     });
 
-    //  Recent transactions (last 5)
+    //  recent transactions (last 5)
     const recentTransaction = await Record.find({ user: userId })
       .sort({ createdAt: -1 })
       .limit(5);
 
-    //  Final response
+    //  final response
     res.json({
       totalIncome,
       totalExpense,
