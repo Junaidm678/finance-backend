@@ -17,7 +17,7 @@ router.get(
   }
 );
 
-// admin + analyst allowed
+// admin+analyst allowed
 router.get(
   "/analyst",
   authMiddleware,
