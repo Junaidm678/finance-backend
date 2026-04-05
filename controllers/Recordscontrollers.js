@@ -42,7 +42,7 @@ exports.getRecords = async (req, res) => {
       };
     }
 
-    // Pagination 
+    // pagination 
     const skip = (pageNumber - 1) * limitNumber;
 
     // total records count
