@@ -12,16 +12,16 @@ const {
 } = require("../controllers/Recordscontrollers");
 
 
-// CREATE → admin + analyst
+// CREATE admin+analyst
 router.post("/", authMiddleware, allowRoles("admin", "analyst"), createRecords);
 
-// GET → all logged users
+// GET all logged users
 router.get("/", authMiddleware, getRecords);
 
-// UPDATE → admin + analyst
+// UPDATE admin+analyst
 router.put("/:id", authMiddleware, allowRoles("admin", "analyst"), updateRecord);
 
-// DELETE → admin only
+// DELETE  admin only
 router.delete("/:id", authMiddleware, allowRoles("admin"), deleteRecords);
 
 module.exports = router;
